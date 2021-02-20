@@ -7,37 +7,32 @@
   <title>Practica 1</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    #mapa {
-      width: 100%;
-      height: 500px;
-    }
-  </style>
+  <link rel='stylesheet' href='style.css' />
 </head>
-<body>
+<body class="principal">
 
   
   <div class="container-fluid">
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <li class="nav-item">        
+                <a class="nav-link active" style="font-size: large;" aria-current="page" href="#">
+                  <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/sports-car-56-1051450.png" width="45px" height="45px">
+                  MadraMotors
+                </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item py-2">
                 <a class="nav-link" href="#servicios">Servicios</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#mapadeubicacion">Ubicacion</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <li class="nav-item py-2">
+                <a class="nav-link" href="#mapadeubicacion">Ubicación</a>
               </li>
             </ul>
           </div>
@@ -51,13 +46,13 @@
       <div id="carouselExampleControls" data-aos="fade-right" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" class="d-block w-100" alt="...">
+            <img src="https://images.unsplash.com/photo-1597404294360-feeeda04612e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" class="d-block w-100" alt="...">
+            <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=847&q=80" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" class="d-block w-100" alt="...">
+            <img src="https://images.unsplash.com/photo-1511919884226-fd3cad34687c?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"  data-bs-slide="prev">
@@ -77,33 +72,33 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <h1>Practica 1</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
+          <h1 class="text-light">¿Quienes somos?</h1>
+          <p class="text-light">Somos una agencia de carros que no solo se encarga de vender los modelos mas nuevos, sino que tambien ofrecemos servicios de reparacion y/o mantenimiento con los costos mas economicos</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid bg-light py-5">
+  <div class="container-fluid py-5">
     <div class="container">
       <div class="row">
-        <div class="col-12 col-md-4">
+        <div class="col-12 col-md-4 card" >
           <a name="servicios"></a>
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" alt="Imagen1" class="w-100 rounded shadow">
-          <h2 class="p-3">Subtitulo 1</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
+          <img  src="https://images.unsplash.com/photo-1583062205555-7af8d8c41c83?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Imagen1" class="w-100 py-2">
+          <h2 class="p-3 text-light">Vehiculos</h2>
+          <p class="text-light">Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
         </div>
 
-        <div class="col-12 col-md-4">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" alt="Imagen2" class="w-100 rounded shadow">
-          <h2 class="p-3">Subtitulo 2</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
+        <div class="col-12 col-md-4 card">
+          <img src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Imagen2" class="w-100 py-2">
+          <h2 class="p-3 text-light">Reparaciones</h2>
+          <p class="text-light">Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
         </div>
 
-        <div class="col-12 col-md-4">
-          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80" alt="Imagen3" class="w-100 rounded shadow">
-          <h2 class="p-3">Subtitulo 3</h2>
-          <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
+        <div class="col-12 col-md-4 card">
+          <img src="https://www.doctorauto.com.mx/wp-content/uploads/2016/05/REFACCIONES-1080x675.jpg" alt="Imagen3" class="w-100 h-75 py-2">
+          <h2 class="p-3 text-light">Refacciones</h2>
+          <p class="text-light">Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu massa venenatis risus, himenaeos congue consequat sapien metus posuere nisi sem convallis blandit. Purus sed condimentum curae habitasse sapien vulputate id netus blandit est nascetur tempor, natoque litora nibh dapibus venenatis magna maecenas bibendum cubilia massa. Pretium mollis tempor suscipit justo proin molestie interdum etiam tempus, ante nibh luctus et ullamcorper blandit eu tortor.</p>
         </div>
       </div>
     </div>
@@ -116,7 +111,7 @@
       <div class="row">
         <div class="col-12">
           <a name="mapadeubicacion"></a>
-         <h2 class="text-center">Mapa de ubicacion</h2>
+         <h2 class="text-center text-white">Donde encontrarnos</h2>
          <div id="mapa"></div>
         </div>
       </div>
@@ -135,27 +130,11 @@
     </div>
   </div>
 
-  <span>Photo by <a href="https://unsplash.com/@cgower?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Christopher Gower</a> on <a href="https://unsplash.com/s/photos/computer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+  <span class="text-white">Photo by <a href="https://unsplash.com/@cgower?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Christopher Gower</a> on <a href="https://unsplash.com/s/photos/computer?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-  
+  <script src="mapa.js"></script>
   <!--API de google maps-->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
-
-  <script>
-    AOS.init();
-
-    function iniciaMapa() {
-      var coordenadas = {
-        lat: 21.152639,
-        lng: -101.711598
-      }
-
-      var map = new google.maps.Map(document.getElementById('mapa'), {
-        center: coordenadas,
-        zoom: 15
-      });
-    }
-  </script>
 </body>
 </html>
