@@ -6,7 +6,7 @@ function iniciaMapa() {
     lng: -101.70345
   }
 
-  var map = new google.maps.Map(document.getElementById('mapa'), {
+  var map = new google.maps.Map(document.getElementById('map'), {
     center: coordenadas,
     zoom: 15
   });
