@@ -57,14 +57,14 @@
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           }
-        });
-        const Pmarcador = {
-        position: posicion,
-        map,
-        title: "Marcador"
-      };
 
-      const marcador = new google.maps.Marker(Pmarcador);
+          const Pmarcador = {
+            position: posicion,
+            map,
+            title: "Marcador"
+          };
+
+          const marcador = new google.maps.Marker(Pmarcador);
 
       map.setCenter(posicion);
 
@@ -75,6 +75,7 @@
       marcador.addListener("mouseover", ()=> {
         infoPlace.open(map, marcador);
       });
+        });
       }
     }
   </script>
