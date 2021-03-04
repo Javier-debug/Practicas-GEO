@@ -52,6 +52,7 @@
       let posicion = null;
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
+          console.log("Entro")
           posicion = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
