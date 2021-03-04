@@ -45,11 +45,12 @@
         center: {
           lat: 21.14785,
           lng: -101.70345
-        }
+        },
+        zoom: 15
       }
 
       map = new google.maps.Map(mapa,propiedades);
-      let posicion = null;
+      let posicion;
       if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(position => {
           console.log("Entro")
