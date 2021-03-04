@@ -50,24 +50,15 @@
       }
 
       map = new google.maps.Map(mapa,propiedades);
-      let posicion;
       if(navigator.geolocation) {
+        var posicion;
         navigator.geolocation.getCurrentPosition(position => {
-          console.log("Entro")
           posicion = {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           }
         });
-      }
-      else {
-        posicion = {
-        lat: 21.14785,
-        lng: -101.70345
-        }
-      }
-
-      const Pmarcador = {
+        const Pmarcador = {
         position: posicion,
         map,
         title: "Marcador"
@@ -84,6 +75,7 @@
       marcador.addListener("mouseover", ()=> {
         infoPlace.open(map, marcador);
       });
+      }
     }
   </script>
 
