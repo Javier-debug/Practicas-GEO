@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica 6</title>
+
+  <style>
+    #mapa {
+      height: 100%;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="mapa">
+
+  </div>
+
+  <script>
+    var myMap = document.getElementById("mapa")
+    var mapa;
+
+    var coor = {
+      lat: 0,
+      lng: 0
+    }
+
+    var propiedades = {
+      center: coor,
+      zoom: 20
+    }
+
+    function initializeMap() {
+      mapa = new google.maps.Map(myMap, propiedades);
+
+      var icon = {
+        url: "https://media.giphy.com/media/U1anBXfZ4wmKoGsIMG/giphy.gif",
+        scaledSize: new google.maps.Size(50,50),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(0,0)
+      }
+
+      var marcador = new google.maps.Marker({
+        position: coor,
+        icon: icon,
+        map: mapa
+      })
+
+      if(navigator.geolocation) {
+        movePosition(marcador);
+      }
+
+      movePosition = (MyMarker) => {
+        navigator.geolocation.getCurrentPosition( posicion => {
+          var pos = {
+            lat: posicion.coords.latitude,
+            lng: posicion.coords.longitude,
+          }
+
+          marker.setPosition(new google.maps.LatLng(pos.lat, pos.lng))
+        })
+      }
+    }
+  </script>
+
+   <!--API de google maps-->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=initializeMap" async defer></script>
+</body>
+</html>
