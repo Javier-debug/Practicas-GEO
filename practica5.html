@@ -33,10 +33,7 @@
 
   
   <script>
-    var content = "<div style='background: black;'>"
-    content += "<p style='color: yellow;'>En una galaxia muy lejana</p>"
-    content += "<h1 style='color: yellow;' >Star wars</h1>"
-    content += "<p style='color: yellow;'>Tuuu tu tu tuuu tuuuuu Tuuu tu tu tuuu tuuuuu TUTUTUTUUUUUUU</p></div>"
+    
 
     function iniciaMapa() {
       const mapa = document.getElementById("map");
@@ -67,7 +64,9 @@
           const marcador = new google.maps.Marker(Pmarcador);
 
       map.setCenter(posicion);
-
+      var content = "<h1>Mi ubicacion</h1>"
+      content += "<p>Coordenadas: "+posicion.lat+ ", " +posicion.lng+"</p>"
+      content += "<p>Esta es su ubicacion actual"
       const infoPlace = new google.maps.InfoWindow({
         content: content
       });
