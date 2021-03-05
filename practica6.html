@@ -64,8 +64,10 @@
             lat: posicion.coords.latitude,
             lng: posicion.coords.longitude,
           }
+          var myPosition = new google.maps.LatLng(pos.lat, pos.lng)
+          marker.setPosition(myPosition)
 
-          marker.setPosition(new google.maps.LatLng(pos.lat, pos.lng))
+          map.panTo(myPosition)
         })
       }
     }
