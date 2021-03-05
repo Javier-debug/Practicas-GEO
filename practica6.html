@@ -67,7 +67,8 @@
           var myPosition = new google.maps.LatLng(pos.lat, pos.lng)
           marker.setPosition(myPosition)
 
-          map.panTo(myPosition)
+          mapa.panTo(myPosition)
+          mapa.setCenter(pos)
         })
       }
     }
