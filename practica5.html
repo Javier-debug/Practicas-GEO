@@ -67,8 +67,8 @@
               lng: -101.71135611534287
             }
           }
-
-          const marcador = new google.maps.Marker(Pmarcador);
+          console.log(Pmarcador2)
+          //const marcador = new google.maps.Marker(Pmarcador);
           const marcador2 = new google.maps.Marker(Pmarcador2);
 
       map.setCenter(posicion);
@@ -87,9 +87,9 @@
         content: content2
       })
 
-      marcador.addListener("mouseover", ()=> {
-        infoPlace.open(map, marcador);
-      });
+      //marcador.addListener("mouseover", ()=> {
+      //  infoPlace.open(map, marcador);
+      //});
 
       marcador2.addListener("mouseover", ()=> {
         infoPlace2.open(map, marcador2);
