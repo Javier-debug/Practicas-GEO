@@ -55,7 +55,10 @@
       })
 
       if(navigator.geolocation) {
-        movePosition(marcador);
+        setInterval(function(){
+          movePosition(marcador)
+        }, 5000);
+
       }
 
       movePosition = (MyMarker) => {
@@ -64,10 +67,9 @@
             lat: posicion.coords.latitude,
             lng: posicion.coords.longitude,
           }
-          var myPosition = new google.maps.LatLng(pos.lat, pos.lng)
-          marker.setPosition(myPosition)
 
-          mapa.panTo(myPosition)
+          marker.setPosition(pos)
+          mapa.panTo(pos)
           mapa.setCenter(pos)
         })
       }
