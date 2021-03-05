@@ -61,18 +61,38 @@
             title: "Marcador"
           };
 
+          const Pmarcador2 = {
+            position: {
+              lat: 21.15293455717941, 
+              lng: -101.71135611534287
+            }
+          }
+
           const marcador = new google.maps.Marker(Pmarcador);
+          const marcador2 = new google.maps.Marker(Pmarcador2);
 
       map.setCenter(posicion);
       var content = "<h1>Mi ubicacion</h1>"
       content += "<p>Coordenadas: "+posicion.lat+ ", " +posicion.lng+"</p>"
-      content += "<p>Esta es su ubicacion actual"
+      content += "<p>Esta es su ubicacion actual</p>"
+
+        var content2 = "<h1>Universidad de la Salle Bajio</h1>"
+      content2 += "<p>Coordenadas: "+Marcador2.position.lat+ ", " +Marcador2.position.lng+"</p>"
+      content2 += "<p>Avenida Universidad 602, Lomas del Campestre, 37150 León, Gto.</p>"
       const infoPlace = new google.maps.InfoWindow({
         content: content
       });
 
+      const infoPlace2 = new google.maps.InfoWindow({
+        content: content2
+      })
+
       marcador.addListener("mouseover", ()=> {
         infoPlace.open(map, marcador);
+      });
+
+      marcador2.addListener("mouseover", ()=> {
+        infoPlace2.open(map, marcador2);
       });
         });
       }
