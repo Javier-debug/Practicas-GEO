@@ -6,11 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Practica Fetch 1</title>
 </head>
+
+<style>
+  p {
+    font-family: 'Times New Roman', serif;
+  }
+</style>
+
 <body>
 
   <div id="Paises">
 
   </div>
+
 
   <script>
 
@@ -22,7 +30,6 @@
           console.log(registro.country);
           let nombre = document.createElement("p");
           nombre.textContent = "País: " + registro.country +", casos: " + registro.cases;
-          nombre.style = "font-family: 'Times New Roman', serif;"
           paises.appendChild(nombre);
         })
       })
