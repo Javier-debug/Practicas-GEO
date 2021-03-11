@@ -17,8 +17,7 @@
     var paises = document.getElementById("Paises");
     fetch('https://javier-debug.github.io/Practicas-GEO/fetch/datos.json')
     .then( (response) => {
-      response.json()
-      .then((datos) => {
+      response.json().then((datos) => {
         datos.forEach(registro => {
           console.log(registro.country);
           let nombre = document.createElement("p");
