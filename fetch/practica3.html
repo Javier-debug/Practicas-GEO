@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica Fetch 2</title>
+</head>
+<body>
+  <div id="mapa">
+
+  </div>
+
+  <script>
+
+    var coord = {
+      lat: 0,
+      lng: 0
+    };
+
+    var propiedades = {
+      center: coord,
+      zoom: 2
+    };
+
+    startMap = () => {
+      const map = new google.maps.Map(document.getElementById("mapa"), propiedades)
+      const markers = getMarkers();
+      console.log(markers);
+
+      for (marcador in markers) {
+        let marker = new google.maps.Marker({
+          map: map,
+          position: new google.maps.LatLng(marcador.latitude, marcador.longitude),
+          title: marcador.name
+        })
+      }
+    }
+
+    getMarkers = () => {
+      const markers = [{
+        name: "México",
+        longitude: "-99.1269",
+        latitude: "19.4978"
+      }, {
+        name: "Brazil",
+        longitude: "-47.9292",
+        latitude: "-15.7801"
+      }, {
+        name: "Spain",
+        longitude: "-3.70327",
+        latitude: "40.4167"
+      }];
+
+      return markers;
+    }
+
+  </script>
+
+   <!--API de google maps-->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=startMap" async defer></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica Fetch 4</title>
+  <style>
+    #mapa {
+      height: 100%;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="mapa">
+
+  </div>
+
+  <script>
+
+    var coord = {
+      lat: 0,
+      lng: 0
+    };
+
+    var propiedades = {
+      center: coord,
+      zoom: 2
+    };
+
+    startMap = () => {
+      const map = new google.maps.Map(document.getElementById("mapa"), propiedades)
+      fetch("https://corona.lmao.ninja/v3/covid-19/countries")
+      .then( (response) => {
+        response.json().then( (data) => {
+          //console.log(data);
+
+          data.forEach( marcador => {
+            fetch("https://corona.lmao.ninja/v3/covid-19/countries")
+            .then((respuesta) => {
+              //console.log(respuesta)
+              respuesta.json().then((datacountry) => {
+                console.log(datacountry);
+
+                  
+                datacountry.forEach(registro => {
+
+                  var informacion = "<strong>Pais: </strong>" + registro.country + ", <strong>Casos: </strong>" + registro.cases
+                  var infoWindow = new google.maps.infoWindow({
+                    content: informacion
+                  })
+                  if(registro.country == marcador.CountryName) {
+                  let marker = new google.maps.Marker({
+                  map: map,
+                  position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
+                  title: marcador.CountryName + " " + registro.cases
+                });
+                marker.addListener("click", () => {
+                  infoWindow.open(map, marker)
+                })
+                }
+                })
+              })
+            })
+          })
+        })
+      })
+      .catch( (error) => {
+        console.log("Ocurrio un error")
+      })
+    }
+
+  </script>
+
+   <!--API de google maps-->
+   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=startMap" async defer></script>
+</body>
+</html>
