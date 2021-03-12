@@ -39,14 +39,14 @@
       const markers = getMarkers();
       console.log(markers);
 
-      for (marcador of markers) {
+      markers.forEach( (marcador) => {
         console.log(marcador.latitude+ ",  " +  marcador.longitude);
         let marker = new google.maps.Marker({
           map: map,
           position: new google.maps.LatLng(marcador.latitude, marcador.longitude),
           title: marcador.name
         })
-      }
+      })
     }
 
     getMarkers = () => {
