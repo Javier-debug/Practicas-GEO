@@ -51,8 +51,8 @@
                   })
                   let marker = new google.maps.Marker({
                   map: map,
-                  position: new google.maps.LatLng(registro.CapitalLatitude, registro.CapitalLongitude),
-                  title: registro.CountryName + " " + registro.cases
+                  position: new google.maps.LatLng(registro.countryInfo.lat, registro.countryInfo.long),
+                  title: registro.country + " " + registro.cases
                 });
                 marker.addListener("click", () => {
                   infoWindow.open(map, marker)
