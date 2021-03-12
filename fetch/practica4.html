@@ -46,7 +46,7 @@
                 datacountry.forEach(registro => {
 
                   var informacion = "<strong>Pais: </strong>" + registro.country + ", <strong>Casos: </strong>" + registro.cases
-                  var infoWindow = new google.maps.infoWindow({
+                  var infoWindow = new google.maps.InfoWindow({
                     content: informacion
                   })
                   let marker = new google.maps.Marker({
