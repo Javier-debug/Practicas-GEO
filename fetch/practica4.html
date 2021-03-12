@@ -36,12 +36,6 @@
 
     startMap = () => {
       const map = new google.maps.Map(document.getElementById("mapa"), propiedades)
-      fetch("https://corona.lmao.ninja/v3/covid-19/countries")
-      .then( (response) => {
-        response.json().then( (data) => {
-          //console.log(data);
-
-          data.forEach( marcador => {
             fetch("https://corona.lmao.ninja/v3/covid-19/countries")
             .then((respuesta) => {
               //console.log(respuesta)
@@ -55,25 +49,17 @@
                   var infoWindow = new google.maps.infoWindow({
                     content: informacion
                   })
-                  if(registro.country == marcador.CountryName) {
                   let marker = new google.maps.Marker({
                   map: map,
-                  position: new google.maps.LatLng(marcador.CapitalLatitude, marcador.CapitalLongitude),
-                  title: marcador.CountryName + " " + registro.cases
+                  position: new google.maps.LatLng(registro.CapitalLatitude, registro.CapitalLongitude),
+                  title: registro.CountryName + " " + registro.cases
                 });
                 marker.addListener("click", () => {
                   infoWindow.open(map, marker)
                 })
-                }
                 })
               })
             })
-          })
-        })
-      })
-      .catch( (error) => {
-        console.log("Ocurrio un error")
-      })
     }
 
   </script>
