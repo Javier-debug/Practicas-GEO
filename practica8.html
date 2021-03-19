@@ -21,21 +21,46 @@
 </head>
 <body>
 
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row">
-        <div class="col-12 text-center">
-          <h1>Google Maps Clustering</h1>
-          <div id="map"></div>
+  <form action="">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="row">
+          <div class="col-6 text-center">
+            <h1>Google Maps Idiomas</h1>
+          </div>
+  
+          <div class="col-6 text-center">
+            <select name="idioma" id="idioma" class="form-control" onchange="this.form.submit()">
+              <option value="es">Español</option>
+              <option value="en">Ingles</option>
+              <option value="it">Italiano</option>
+              <option value="zh">Chino</option>
+              <option value="ja">Japones</option>
+            </select>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col-12">
+            <div id="map"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </form>
   
 
   <script>
     var mapa = document.getElementById("map");
-    var cuenta = 1;
+    var queryString = window.location.search;
+    var script = document.createElement("script");
+    const urlParams = new URLSearchParams(queryString);
+    const idioma = urlParams.get("idioma");
+
+    document.getElementById("idioma").value = idioma;
+
+    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa&language=" + idioma;
+    document.head.appendChild(script);
     var coord = {
       lat: -31.563910,
       lng: 147.154312
