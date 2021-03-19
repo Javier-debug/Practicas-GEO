@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practica 8</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <style>
+    #map {
+      width: 100%;
+      height: 640px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h1>Google Maps Clustering</h1>
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <script>
+    var mapa = document.getElementById("map");
+    var cuenta = 1;
+    var coord = {
+      lat: -31.563910,
+      lng: 147.154312
+    }
+
+    var iniciaMapa = () => {
+      
+      var map = new google.maps.Map(
+        mapa, {
+          center: coord,
+          zoom: 3
+        }
+      )
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <!--API de google maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa&region=JP&language=ja" async defer></script>
+</body>
+</html>
