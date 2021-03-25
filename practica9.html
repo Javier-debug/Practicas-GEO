@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Creando estilos en Mapas de Google</title>
+
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #map {
+      width: 100%;
+      height: 640px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="map"></div>
+
+  <script>
+
+    iniciaMapa = () => {
+
+      var styledMapType = new google.maps.StyledMapType(
+                [
+                    {
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#1d2c4d"
+                        }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#8ec3b9"
+                        }
+                        ]
+                    },
+                    {
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                            "color": "#1a3646"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.country",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                        {
+                            "color": "#4b6878"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.land_parcel",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#64779e"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "administrative.province",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                        {
+                            "color": "#4b6878"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.man_made",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                        {
+                            "color": "#334e87"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "landscape.natural",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#023e58"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#283d6a"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#6f9ba5"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                            "color": "#1d2c4d"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                            "color": "#023e58"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.park",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#3C7680"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "poi.school",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#ff40ff"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#304a7d"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#98a5be"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                            "color": "#1d2c4d"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#2c6675"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "geometry.stroke",
+                        "stylers": [
+                        {
+                            "color": "#255763"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#b0d5ce"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "road.highway",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                            "color": "#023e58"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#98a5be"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "transit",
+                        "elementType": "labels.text.stroke",
+                        "stylers": [
+                        {
+                            "color": "#1d2c4d"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.line",
+                        "elementType": "geometry.fill",
+                        "stylers": [
+                        {
+                            "color": "#283d6a"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "transit.station",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#3a4762"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "geometry",
+                        "stylers": [
+                        {
+                            "color": "#0e1626"
+                        }
+                        ]
+                    },
+                    {
+                        "featureType": "water",
+                        "elementType": "labels.text.fill",
+                        "stylers": [
+                        {
+                            "color": "#4e6d70"
+                        }
+                        ]
+                    }
+                    ],
+              {name: 'Mapa Oscuro'}
+            );
+
+      var propiedades = {
+        center : {
+          lat: 21.152639,
+          lng: -101.711598
+        },
+        zoom: 14,
+        mapTypeControlOptions: {
+          mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "style_map"]
+        }
+      };
+
+      var mapa = document.getElementById("map");
+      var map = new google.maps.Map(mapa, propiedades);
+
+
+      map.mapTypes.set("style_map", styleMapType);
+      map.setMapTypeId("style_map");
+    }
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <!--API de google maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+</body>
+</html>
