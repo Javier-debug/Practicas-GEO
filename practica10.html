@@ -85,11 +85,12 @@
           watchID = navigator.geolocation.watchPosition((position) => {
             var lat = position.coords.latitude;
             var lng = position.coords.latitude;
+            console.log(position)
             var positionCoord = lat + ", " + lng
             var exactitud = position.coords.accuracy ? position.coords.accuracy : "No disponible"
             var altitud = position.coords.altitude ? position.coords.altitude : "No disponible"
             var velocidad = position.coords.speed ? position.coords.speed : "No disponible"
-            var fechaHora = (new Date(position.timestamp)).toString
+            var fechaHora = (new Date(position.timestamp)).toString()
             const html = `
               <p>Coordenadas: ${ positionCoord }</p>
               <p>Exactitud: ${ exactitud }</p>
