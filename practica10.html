@@ -84,7 +84,7 @@
         btnStart.addEventListener("click", () => {
           watchID = navigator.geolocation.watchPosition((position) => {
             var lat = position.coords.latitude;
-            var lng = position.coords.latitude;
+            var lng = position.coords.longitude;
             console.log(position)
             var positionCoord = lat + ", " + lng
             var exactitud = position.coords.accuracy ? position.coords.accuracy : "No disponible"
