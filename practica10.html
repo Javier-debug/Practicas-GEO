@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Watch Position</title>
+
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #map {
+      width: 100%;
+      height: 340px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container text-center small">
+    <div class="row m-2">
+      <div class="col-6">
+        <button class="btn btn-sm btn-primary" id="btnStart">Iniciar Watch</button>
+      </div>
+      <div class="col-6">
+        <button class="btn btn-sm btn-danger" id="btnStop">Detener Watch</button>
+      </div>
+    </div>
+    <div class="row m-2">
+      <div class="col-12" id="data">
+
+      </div>
+    </div>
+  </div>
+  
+  <div id="map"></div>
+
+  <script>
+    const btnStart = document.getElementById("btnStart");
+    const btnStop = document.getElementById("btnStop");
+    const data = document.getElementById("data");
+
+    iniciaMapa = () => {
+
+      var coor = {
+      lat: 0,
+      lng: 0
+      }
+
+      var propiedades = {
+        center : coor,
+        zoom: 14,
+      };
+
+      var mapa = document.getElementById("map");
+      var map = new google.maps.Map(mapa, propiedades);
+
+      var icon = {
+        url: "https://media.giphy.com/media/U1anBXfZ4wmKoGsIMG/giphy.gif",
+        scaledSize: new google.maps.Size(20,20),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(0,0)
+      }
+
+      var marcador = new google.maps.Marker({
+        position: coor,
+        icon: icon,
+        map: mapa
+      })
+
+      var watchID = null;
+      var positionOptions = {
+        enableHighAccuracy: true,
+        timeout: 10 * 1000,
+        maximumAge: 30 * 1000,
+      }
+
+      if (navigator.geolocation)
+      {
+        btnStart.addEventListener("click", () => {
+          watchID = navigator.geolocation.watchPosition((position) => {
+            var lat = position.coords.latitude;
+            var lng = position.coords.latitude;
+            var positionCoord = lat + ", " + lng
+            var exactitud = position.coords.accuracy ? position.coords.accuracy : "No disponible"
+            var altitud = position.coords.altitude ? position.coords.altitude : "No disponible"
+            var velocidad = position.coords.speed ? position.coords.speed : "No disponible"
+            var fechaHora = (new Date(position.timestamp)).toString
+            const html = `
+              <p>Coordenadas: ${ positionCoord }</p>
+              <p>Exactitud: ${ exactitud }</p>
+              <p>Altitud: ${ altitud }</p>
+              <p>Velocidad: ${ velocidad }</p>
+              <p>Fecha y Hora: ${ fechaHora }</p>
+            `
+
+            data.innerHTML = html
+            marcador.setPosition(new google.maps.LatLng(lat, lng))
+            map.panTo(new google.maps.LatLng(lat, lng))
+          }, error, positionOptions);
+        });
+
+        btnStop.addEventListener("click", () => {
+          if (watchID != null)
+          {
+            navigator.geolocation.clearWatch(watchID);
+            const html = "<p>Se detuvo el monitoreo</p>"
+            data.innerHTML = html
+          }
+        })
+      }
+      
+      error = (positionError) => {
+      console.log(positionError.message)
+      }
+    }
+
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <!--API de google maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+</body>
+</html>
