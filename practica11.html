@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <title>Document</title>
+
+  <style>
+    html, body {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #map1, #map2, #map3, #map4, #map5, #map6 {
+      width: 100%;
+      height: 340px;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="container-fluid m-2">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Tipos de controles para el mapa</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div id="map1"></div>
+        <p>Estandar</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="map1"></div>
+        <p>Sin controles</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div id="map3"></div>
+        <p>Sin zoom</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="map4"></div>
+        <p>ControlOptions</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <div id="map5"></div>
+        <p>ControlPositionm</p>
+      </div>
+      <div class="col-12 col-md-6">
+        <div id="map6"></div>
+        <p>Restricting MapBounds</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var map1 = document.getElementById("map1")
+    var map2 = document.getElementById("map2")
+    var map3 = document.getElementById("map3")
+    var map4 = document.getElementById("map4")
+    var map5 = document.getElementById("map5")
+    var map6 = document.getElementById("map6")
+
+    iniciaMapa = () => {
+
+      var coor = {
+        lat: 21.152639,
+        lng: -101.711598
+      }
+
+      var propiedades = {
+        center : coor,
+        zoom: 14,
+      };
+
+      var propiedades2 = {
+        center : coor,
+        zoom: 14,
+        disabledDefaultUI: true
+      };
+
+      var propiedades3 = {
+        center : coor,
+        zoom: 14,
+        zoomControl: false,
+        scaleControl: false
+      };
+
+      var propiedades4 = {
+        center : coor,
+        zoom: 14,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.mapTypeControlStyle.DROPDOWN_MENU,
+          mapTypeIds: ['roadmap', 'satellite', 'terrain']
+        }
+      };
+
+      var propiedades5 = {
+        center : coor,
+        zoom: 14,
+        mapTypeControl: true,
+        mapTypeControlOptions: {
+          style: google.maps.mapTypeControlStyle.HORIZONTAL_BAR,
+          position: google.maps.ControlPosition.TOP_CENTER
+        },
+        zoomControl: true,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        scaleControl: true,
+        streetViewControl: true,
+        streetViewControlOptions: {
+          position: google.maps.ControlPosition.LEFT_TOP
+        },
+        fullscreenControl: true
+      };
+
+      var limits = {
+        north: 21.390039,
+        south: 20.858414,
+        west: -102.149631,
+        east: -101.092990
+      }
+
+      var propiedades6 = {
+        center : coor,
+        zoom: 14,
+        restriction: {
+          latLngBounds: limits,
+          strictBounds: false
+        }
+      };
+
+
+      var mapa1 = new google.maps.Map(map1, propiedades);
+      var mapa2 = new google.maps.Map(map2, propiedades2);
+      var mapa3 = new google.maps.Map(map3, propiedades3);
+      var mapa4 = new google.maps.Map(map4, propiedades4);
+      var mapa5 = new google.maps.Map(map5, propiedades5);
+      var mapa6 = new google.maps.Map(map6, propiedades6);
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  <!--API de google maps-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+</body>
+</html>
