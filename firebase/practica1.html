@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Firebase</title>
+
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">  
+</head>
+<body>
+
+
+  <div class="container-fluid bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Lista de productos</h1>
+        </div>
+      </div>
+      <form id="form">
+        <div class="row">
+          <div class="col-12 col-md-4 py-2">
+            <input class="form-control" placeholder="Nombre:" type="text" name="nombre" required >
+          </div>
+          <div class="col-12 col-md-4 py-2">
+            <input class="form-control" placeholder="Codigo" type="number" step="any" name="codigo" required >
+          </div>
+          <div class="col-12 col-md-4 py-2">
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="container-fluid bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8 p-2">
+          <ul id="lista" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  var lista = document.querySelector("#lista")
+  var formulario = document.querySelector("#form")
+
+    var firebaseConfig = {
+      apiKey: "AIzaSyBt6aPBu6bEspCNGd1_peIOisvS9B8alBg",
+      authDomain: "sistemasgeo-306022.firebaseapp.com",
+      projectId: "sistemasgeo-306022",
+      storageBucket: "sistemasgeo-306022.appspot.com",
+      messagingSenderId: "813018402228",
+      appId: "1:813018402228:web:b540edcc6b2cf040aff6e1"
+    };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const db = firebase.firestore()
+
+  function renderProductos(doc)
+  {
+    let li = document.createElement("li")
+    let nombre = document.createElement("span")
+    let codigo = document.createElement("span")
+    let btnBorrar = document.createElement("button");
+    btnBorrar.className = "btn btn-danger m-3";
+    btnBorrar.textContent = "BORRAR"
+
+    nombre.textContent = doc.data().nombre + " ";
+    codigo.textContent = doc.data().codigo + " ";
+    li.setAttribute("id", doc.id);
+    li.appendChild(btnBorrar)
+    li.appendChild(nombre);
+    li.appendChild(codigo);
+
+    lista.appendChild(li)
+
+
+    btnBorrar.addEventListener("click", (event) => {
+      let id = event.target.parentElement.getAttribute("id");
+      db.collection("productos").doc(id).delete();
+    })
+  }
+
+  formulario.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    db.collection("productos").add({
+      nombre: formulario.nombre.value,
+      codigo: formulario.codigo.value,
+    });
+
+    formulario.nombre.value = ""
+    formulario.codigo.value = ""
+  })
+
+  db.collection("productos").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+      if (change.type == "added") {
+        renderProductos(change.doc);
+      }
+      else if (change.type == "removed") {
+        let valId = document.getElementById(change.doc.id);
+        lista.removeChild(valId)
+      }
+    })
+    console.log(changes)
+  })
+  </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+</body>
+</html>
