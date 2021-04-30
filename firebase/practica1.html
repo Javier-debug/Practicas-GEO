@@ -35,6 +35,7 @@
         </div>
       </form>
     </div>
+    <hr>
   </div>
 
 
@@ -42,7 +43,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-8 p-2">
-          <ul id="lista" class="list-group"></ul>
+          <ul id="lista" class="list-group" style="list-style-type: none;"></ul>
         </div>
       </div>
     </div>
@@ -80,6 +81,12 @@
     li.appendChild(btnBorrar)
     li.appendChild(nombre);
     li.appendChild(codigo);
+    li.style.color = "white"
+    li.style.background = "blue"
+  li.style.padding= "10px"
+  li.style.borderRadius = "25px"
+  li.style.margin = "10px"
+  li.style.boxShadow = "inset 0 -3em 3em rgba(0,0,0,0.1), 0 0  0 2px rgb(255,255,255), 0.3em 0.3em 1em rgba(0,0,0,0.3)"
 
     lista.appendChild(li)
 
