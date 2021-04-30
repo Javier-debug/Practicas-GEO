@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-firestore.js"></script>
+  <script src="https://kit.fontawesome.com/725910d27b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body class="bg-light">
+
+  <div class="container-fluid py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h3><i class="fas fa-boxes text-primary"></i> Lista de productos</h3>
+        </div>
+        <div class="col-4">
+          <button type="text" class="btn btn-primary" data-toggle="modal" data-target="#modalNuevo">
+            Nuevo <i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8 p-2">
+          <ul id="lista" class="list-group"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="modalNuevo">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Nuevo producto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form id="formAgregar">
+            <div class="row">
+              <div class="col-12 col-md-4 py-2">
+                <input class="form-control" placeholder="Nombre:" type="text" name="nombre" required >
+              </div>
+              <div class="col-12 col-md-4 py-2">
+                <input class="form-control" placeholder="Codigo" type="number" step="any" name="codigo" required >
+              </div>
+              <div class="col-12 col-md-4 py-2">
+                <button type="submit" class="btn btn-primary">Agregar <i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+  <!-- The Modal -->
+  <div class="modal" id="modalEditar">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Editar producto</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form id="formEditar">
+            <div class="row">
+              <div class="col-12 col-md-4 py-2">
+                
+                <input class="form-control" placeholder="Nombre:" type="text" name="nombre" required >
+              </div>
+              <div class="col-12 col-md-4 py-2">
+                <input class="form-control" placeholder="Codigo" type="number" step="any" name="codigo" required >
+              </div>
+              <div class="col-12 col-md-4 py-2">
+                <input type="hidden" name="id" id="id">
+                <button type="submit" class="btn btn-warning">Editar <i class="fas fa-user-edit"></i></button>
+              </div>
+            </div>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+  <script src="connection.js"></script>
+  <script src="constants.js"></script>
+  <script src="register.js"></script>
+  <script src="showregisters.js"></script>
+  <script src="add.js"></script>
+  <script src="update.js"></script>
+  <script src="service.js"></script>
+</body>
+</html>
