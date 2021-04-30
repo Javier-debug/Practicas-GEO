@@ -37,7 +37,6 @@ function showRegisters(doc) {
   })
 
   btnEditar.addEventListener("click", (e) => {
-    let id = e.target.parentElement.getAttribute("id");
     register.edit()
   })
 }
