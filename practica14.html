@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<style>
+  html, body {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<body>
+  
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <div id="map"></div>
+    </div>
+    <div class="col-12 col-md-6">
+      <h1>Ciudades de mexico mas pobladas</h1>
+      <div id="datos"></div>
+    </div>
+  </div>
+</div>
+
+  <script>
+    var map = document.getElementById("map")
+    var datos = document.getElementById("datos")
+
+    iniciaMapa = () => {
+
+      var coor = {
+        lat: 21.152639,
+        lng: -101.711598
+      }
+
+      var propiedades = {
+        center : coor,
+        zoom: 6,
+        mapTypeId: 'terrain'
+      };
+
+      var mapa = new google.maps.Map(map, propiedades);
+
+      var content = `<table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Municipio</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Habitantes</th>
+              </tr>
+            </thead>
+            <tbody>`
+
+      fetch('municipios.json')
+      .then( (response) => {
+        response.json().then((municipios) => {
+          var coorVuelos = [];
+          municipios.forEach(municipio => {
+
+            coorVuelos.push(municipio.coordenadas)
+
+            var circule = new google.maps.Circule({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: '#FF0000',
+            fillOpacity: 0.35,
+            map: mapa,
+            center: municipio.coordenadas,
+            radius: Math.sqrt(municipio.habitantes) * 10
+          });
+
+          content += `
+          <tr>
+                  <th scope="row">${ municipio.nombre}</th>
+                  <td>${ municipio.estado}</td>
+                  <td>${ municipio.habitantes}</td>
+                </tr>`
+          })
+
+          var trazos = new google.maps.Polyline({
+            path: coorVuelos,
+            geodesic: true,
+            strokeColor: '#CCCCCC',
+            strokeOpacity: 0.5,
+            strokeColor: 1
+          })
+
+          trazos.setMap(mapa);
+
+          content +=`  
+                </tbody>
+                </table>`;
+
+            datos.innerHTML = content;
+        })
+      })
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!--API de google maps-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAv-m46ebIV9fqkE2fIBGeWunmGmBm2R24&callback=iniciaMapa" async defer></script>
+</body>
+</html>
