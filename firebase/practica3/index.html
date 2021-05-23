@@ -21,6 +21,10 @@
     height: 50%;
     margin-top: 10px;
   }
+
+  .logged-in, .logged-out {
+    display: none;
+  }
 </style>
 
 
@@ -35,16 +39,16 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item logged-in">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#miCuentaModal">Mi cuenta</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item logged-in">
           <a class="nav-link" href="#" id="salir">Salir</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item logged-out">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#ingresarModal">Ingresar</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item logged-out">
           <a class="nav-link" href="#" data-toggle="modal" data-target="#registrarModal">Registrarse</a>
         </li>
       </ul>
@@ -80,6 +84,11 @@
               </div>
             </div>
           </form>
+          <div class="row">
+            <div class="col-12 text-center">
+              <span onclick="entrarGoogle()" class="btn btn-danger">Ingresar con Google</span>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -104,6 +113,11 @@
           <form id="formaregistrar">
             <div class="row">
               <div class="col-12 m-2">
+                <input class="form-control" type="text" id="rnombre" required placeholder="Ingrsa tu nombre">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
                 <input class="form-control" type="email" id="rcorreo" required placeholder="Ingrsa tu correo">
               </div>
             </div>
@@ -113,8 +127,18 @@
               </div>
             </div>
             <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="number" step="any" id="rtelefono" required placeholder="Ingrsa tu telefono">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 m-2">
+                <input class="form-control" type="text" id="rdireccion" required placeholder="Ingrsa tu direccion">
+              </div>
+            </div>
+            <div class="row">
               <div class="col-12 text-center">
-                <button class="btn btn-primary">Registrarse</button>
+                <input type="submit" class="btn btn-primary" value="Registrarse">
                 <p class="error text-danger"></p>
               </div>
             </div>
@@ -138,8 +162,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">
-          Info de mi cuenta
+        <div class="modal-body datosdelacuenta">
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -151,21 +175,7 @@
 
   <div class="container">
     <div class="row text-center" id="listaPlatillos">
-      <div class="col-12 col-md-4">
-        <img src="https://imagenes.milenio.com/hSy075x7HHloehtHpm5Z3QRvsb8=/936x566/https://www.milenio.com/uploads/media/2019/06/03/no-hay-quien-se-resista.jpg" alt="Pizza">
-        <p>Pizza de pepperoni</p>
-        <p>$89</p>
-      </div>
-      <div class="col-12 col-md-4">
-        <img src="https://t2.rg.ltmcdn.com/es/images/0/2/6/img_pizza_hawaiana_de_jamon_y_pina_50620_orig.jpg" alt="Pizza">
-        <p>Pizza hawaiana</p>
-        <p>$129</p>
-      </div>
-      <div class="col-12 col-md-4">
-        <img src="http://www.wikichef.net/webapp/img/recipes/ce403a_pizza-con-queso-y-camarones_w1000.jpg" alt="Pizza">
-        <p>Pizza de camaron</p>
-        <p>$150</p>
-      </div>
+      
     </div>
   </div>
 
